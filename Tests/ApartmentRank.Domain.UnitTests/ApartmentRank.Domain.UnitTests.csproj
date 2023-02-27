@@ -21,4 +21,31 @@
     <ProjectReference Include="..\..\Domain\ApartmentRank.Domain.Services\ApartmentRank.Domain.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\IdealistaResponseTest.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IdealistaResponseTest.json</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="IdealistaResponseTest.json">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IdealistaResponseTest.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>
