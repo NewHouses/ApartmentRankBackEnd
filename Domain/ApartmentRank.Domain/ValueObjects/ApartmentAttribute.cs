@@ -2,12 +2,12 @@
 {
     public class ApartmentAttribute
     {
-        public string Name { get; set; }
+        public string name { get; set; }
         public bool added { get; set; }
 
         public ApartmentAttribute(string name, bool added)
         {
-            Name = name;
+            this.name = name;
             this.added = added;
         }
     }

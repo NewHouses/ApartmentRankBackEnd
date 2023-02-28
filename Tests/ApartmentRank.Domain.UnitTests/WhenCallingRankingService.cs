@@ -9,6 +9,7 @@ namespace ApartmentRank.Domain.UnitTests
     public class WhenCallingRankingService
     {
         private IRankingService rankingService;
+
         [SetUp]
         public void Setup()
         {

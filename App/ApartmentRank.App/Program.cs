@@ -48,7 +48,7 @@ foreach (var apartment in apartments)
     foreach (var atributo in apartment.apartmentAttributes)
     {
         if(atributo.added)
-            Console.WriteLine($"\t\t{atributo.Name}");
+            Console.WriteLine($"\t\t{atributo.name}");
     }
 }
 
@@ -58,11 +58,11 @@ var hasTwoBathroomsPreference = new Preference(new ApartmentAttribute("hasTwoBat
 var hasWashMachinePreference = new Preference(new ApartmentAttribute("hasWashMachine", true), 0);
 var allowPetsPreference = new Preference(new ApartmentAttribute("allowPets", true), 0);
 Console.WriteLine("Ten 2 baños: ");
-hasTwoBathroomsPreference.Score = int.Parse(Console.ReadLine());
+hasTwoBathroomsPreference.score = int.Parse(Console.ReadLine());
 Console.WriteLine("Ten lavalouzas: ");
-hasWashMachinePreference.Score = int.Parse(Console.ReadLine());
+hasWashMachinePreference.score = int.Parse(Console.ReadLine());
 Console.WriteLine("Permite mascotas: ");
-allowPetsPreference.Score = int.Parse(Console.ReadLine());
+allowPetsPreference.score = int.Parse(Console.ReadLine());
 
 Console.WriteLine("\n\nObrigado, esta é clasificación dos apartamentos segundo a súas preferencias:");
 

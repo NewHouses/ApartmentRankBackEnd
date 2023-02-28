@@ -1,0 +1,85 @@
+﻿{
+	"apartments": [
+		{
+			"id": "",
+			"score": 0,
+			"name": "Piso Centro - Areal, Vigo",
+			"description": "¡Estupendo piso en el centro de Vigo! Cuenta con dos habitaciones, un baño completo, cocina independiente y un precioso salón-comedor. Tiene una fantástica terraza cerrada para disfrutar de las vistas a la ría de Vigo. Listo para entrar a vivir, completamente equipado, en una ubicación privilegiada con todos los servicios cerca. Comunidad, agua y calefacción central incluida en el precio. Para más información, no dudes en consultarnos! Estaremos encantados de ayudarle.",
+			"imageUrl": "https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/e3/54/55/1094146089.jpg",
+			"price": 800.0,
+			"propertyType": "flat",
+			"operation": "rent",
+			"size": 75.0,
+			"isExterior": true,
+			"rooms": 2,
+			"bathrooms": 1,
+			"address": "barrio Centro - Areal",
+			"latitude": 42.2417661,
+			"longitude": -8.7223115,
+			"link": "https://www.idealista.com/inmueble/100633847/",
+			"status": "good",
+			"newDevelopment": false,
+			"parkingSpace": {
+				"hasParkingSpace": false,
+				"isParkingSpaceIncludedInPrice": false
+			},
+			"apartmentAttributes": [
+				{
+					"name": "hasLift",
+					"added": true
+				},
+				{
+					"name": "hasTerrace",
+					"added": true
+				},
+				{
+					"name": "includeCommunity",
+					"added": true
+				}
+			]
+		},
+		{
+			"id": "",
+			"score": 0,
+			"name": "Piso en Calle de Tomás Paredes, 1 Coia, Vigo",
+			"description": "Zona Bouzas -Tomas Paredes edificio en piedra con muy buenas calidades, vivienda distribuida en dos dormitorios y dos baños uno con bañera en habitación principal y otro con ducha, dispone de cocina amplia totalmente equipada con una zona de lavadero y una pequeña terraza. Las habitaciones con armarios empotrados hasta el techo. Calefacción individual. Plaza de garaje en primer sotano amplia con acceso directo al piso, trastero en el bajo cubierta. La vivienda se entrega amueblada a excepción de una habitación que se podria negociar, tambien posibilidad de retirar algún mueble. NO se admiten mascotas.",
+			"imageUrl": "https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/ec/12/66/1094111367.jpg",
+			"price": 700.0,
+			"propertyType": "flat",
+			"operation": "rent",
+			"size": 72.0,
+			"isExterior": true,
+			"rooms": 2,
+			"bathrooms": 2,
+			"address": "Calle de Tomás Paredes, 1",
+			"latitude": 42.2219248,
+			"longitude": -8.752848,
+			"link": "https://www.idealista.com/inmueble/100632683/",
+			"status": "good",
+			"newDevelopment": false,
+			"parkingSpace": {
+				"hasParkingSpace": true,
+				"isParkingSpaceIncludedInPrice": true
+			},
+			"apartmentAttributes": [
+				{
+					"name": "hasLift",
+					"added": true
+				},
+				{
+					"name": "hasTerrace",
+					"added": true
+				},
+				{
+					"name": "washMachine",
+					"added": true
+				},
+				{
+					"name": "alowPets",
+					"added": false
+				}
+			]
+		}
+	],
+	"total": 2
+}

@@ -88,7 +88,7 @@ namespace ApartmentRank.Domain.UnitTests
             Assert.That(apartments[0].status, Is.EqualTo("good"));
             Assert.That(apartments[0].newDevelopment, Is.EqualTo(false));
             Assert.That(apartments[0].parkingSpace, Is.EqualTo(null));
-            Assert.That(apartments[0].apartmentAttributes.Single().Name, Is.EqualTo("hasLift"));
+            Assert.That(apartments[0].apartmentAttributes.Single().name, Is.EqualTo("hasLift"));
             Assert.That(apartments[0].apartmentAttributes.Single().added, Is.EqualTo(true));
 
             Assert.That(apartments[1].name, Is.EqualTo("Piso en Calle de Tomás Paredes, 1 Coia, Vigo"));
@@ -108,7 +108,7 @@ namespace ApartmentRank.Domain.UnitTests
             Assert.That(apartments[1].newDevelopment, Is.EqualTo(false));
             Assert.That(apartments[1].parkingSpace.hasParkingSpace, Is.EqualTo(true));
             Assert.That(apartments[1].parkingSpace.isParkingSpaceIncludedInPrice, Is.EqualTo(true));
-            Assert.That(apartments[0].apartmentAttributes.Single().Name, Is.EqualTo("hasLift"));
+            Assert.That(apartments[0].apartmentAttributes.Single().name, Is.EqualTo("hasLift"));
             Assert.That(apartments[0].apartmentAttributes.Single().added, Is.EqualTo(true));
         }
 
@@ -116,7 +116,7 @@ namespace ApartmentRank.Domain.UnitTests
         {
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName; 
-            var idealistaResponseJsonPath = @"IdealistaResponseTest.json";
+            var idealistaResponseJsonPath = @"Resources/IdealistaResponseTest.json";
 
             string fullPath = Path.Combine(projectDirectory, idealistaResponseJsonPath);
             return File.ReadAllText(fullPath);
