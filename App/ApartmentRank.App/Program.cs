@@ -42,10 +42,10 @@ while (continuar)
 
 foreach (var apartment in apartments)
 {
-    Console.WriteLine($"\n\tApartamento {apartment.Name}");
-    Console.WriteLine($"\t{apartment.Description}");
+    Console.WriteLine($"\n\tApartamento {apartment.name}");
+    Console.WriteLine($"\t{apartment.description}");
     Console.WriteLine("\tTen os seguintes atributos:");
-    foreach (var atributo in apartment.ApartmentAttributes)
+    foreach (var atributo in apartment.apartmentAttributes)
     {
         if(atributo.added)
             Console.WriteLine($"\t\t{atributo.Name}");
@@ -71,7 +71,7 @@ var rank = 0;
 foreach(var apartment in ranking)
 {
     rank++;
-    Console.WriteLine($"\n{rank}# apartamento {apartment.Key.Name} con {apartment.Value} puntos");
+    Console.WriteLine($"\n{rank}# apartamento {apartment.Key.name} con {apartment.Value} puntos");
 }
 
 

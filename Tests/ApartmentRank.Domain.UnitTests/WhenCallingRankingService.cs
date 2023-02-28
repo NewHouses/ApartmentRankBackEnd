@@ -23,9 +23,9 @@ namespace ApartmentRank.Domain.UnitTests
 
             var apartmentRanking = rankingService.OrderByPreferences(apartments, preferences).ToArray();
 
-            Assert.That(apartmentRanking[0].Key.Id, Is.EqualTo(apartments[0].Id));
-            Assert.That(apartmentRanking[1].Key.Id, Is.EqualTo(apartments[1].Id));
-            Assert.That(apartmentRanking[2].Key.Id, Is.EqualTo(apartments[2].Id));
+            Assert.That(apartmentRanking[0].Key.id, Is.EqualTo(apartments[0].id));
+            Assert.That(apartmentRanking[1].Key.id, Is.EqualTo(apartments[1].id));
+            Assert.That(apartmentRanking[2].Key.id, Is.EqualTo(apartments[2].id));
         }
 
         [Test]
@@ -40,11 +40,11 @@ namespace ApartmentRank.Domain.UnitTests
 
             var apartmentRanking = rankingService.OrderByPreferences(apartments, preferences).ToArray();
 
-            Assert.That(apartmentRanking[0].Key.Id, Is.EqualTo(apartments[1].Id));
+            Assert.That(apartmentRanking[0].Key.id, Is.EqualTo(apartments[1].id));
             Assert.That(apartmentRanking[0].Value, Is.EqualTo(1));
-            Assert.That(apartmentRanking[1].Key.Id, Is.EqualTo(apartments[0].Id));
+            Assert.That(apartmentRanking[1].Key.id, Is.EqualTo(apartments[0].id));
             Assert.That(apartmentRanking[1].Value, Is.EqualTo(2));
-            Assert.That(apartmentRanking[2].Key.Id, Is.EqualTo(apartments[2].Id));
+            Assert.That(apartmentRanking[2].Key.id, Is.EqualTo(apartments[2].id));
             Assert.That(apartmentRanking[2].Value, Is.EqualTo(3));
         }
 

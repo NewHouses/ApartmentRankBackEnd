@@ -17,7 +17,7 @@ namespace ApartmentRank.Domain.Services
                 var score = 0;
                 foreach (var preference in preferences)
                 {
-                    var apartmentAttribute = apartment.ApartmentAttributes.FirstOrDefault(aa => aa.Name.Equals(preference.ApartmentAttribute.Name));
+                    var apartmentAttribute = apartment.apartmentAttributes.FirstOrDefault(aa => aa.Name.Equals(preference.ApartmentAttribute.Name));
 
                     if (apartmentAttribute?.added == preference.ApartmentAttribute.added)
                     {

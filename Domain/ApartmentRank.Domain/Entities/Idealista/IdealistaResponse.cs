@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using ApartmentRank.Domain.ValueObjects;
+using System.Text.Json;
 
 namespace ApartmentRank.Domain.Entities.Idealista
 {
@@ -32,12 +33,6 @@ namespace ApartmentRank.Domain.Entities.Idealista
         public bool hasLift { get; set; }
         public ParkingSpace? parkingSpace { get; set; }
         public SuggestedTexts? suggestedTexts { get; set; }
-    }
-
-    public class ParkingSpace
-    {
-        public bool hasParkingSpace { get; set; }
-        public bool isParkingSpaceIncludedInPrice { get; set; }
     }
 
     public class SuggestedTexts {
