@@ -25,6 +25,7 @@ namespace ApartmentRank.Domain.Services
                     }
                 }
 
+                apartment.score = score;
                 ranking.Add(apartment, score);
             }
 
