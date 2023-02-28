@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -42,6 +42,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="ApartmentRankResponse.json">
+      <LastGenOutput>IdealistaResponseTest.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </None>
+    <None Update="ApartmentRankPreferencesRequestTest.json">
+      <LastGenOutput>IdealistaResponseTest.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </None>
     <None Update="IdealistaResponseTest.json">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>IdealistaResponseTest.Designer.cs</LastGenOutput>
