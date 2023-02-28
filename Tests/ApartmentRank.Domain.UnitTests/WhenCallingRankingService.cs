@@ -49,6 +49,26 @@ namespace ApartmentRank.Domain.UnitTests
             Assert.That(apartmentRanking[2].Value, Is.EqualTo(3));
         }
 
+        [Test]
+        public void GetScoredApartmentResponseByTheGivenPreferences()
+        {
+            var apartments = AssumeApartments();
+            var apartmentRankResponse = new ApartmentRankResponse(apartments, apartments.Length);
+            var preferences = new Preference[] {
+                new Preference(new ValueObjects.ApartmentAttribute("hasTwoBathrooms", true), 1),
+                new Preference(new ValueObjects.ApartmentAttribute("hasWashMachine", true), 1),
+                new Preference(new ValueObjects.ApartmentAttribute("allowPets", true), 1)
+            };
+
+            var scoredApartmentRankResponse = rankingService.GetScoredApartmentRankResponse(apartmentRankResponse, preferences);
+
+            Assert.That(scoredApartmentRankResponse.apartments.Count(), Is.EqualTo(3));
+            var scoredApartments = scoredApartmentRankResponse.apartments.ToArray();
+            Assert.That(scoredApartments[0].score, Is.EqualTo(2));
+            Assert.That(scoredApartments[1].score, Is.EqualTo(1));
+            Assert.That(scoredApartments[2].score, Is.EqualTo(3));
+        }
+
         private static Apartment[] AssumeApartments()
         {
             return new Apartment[] {

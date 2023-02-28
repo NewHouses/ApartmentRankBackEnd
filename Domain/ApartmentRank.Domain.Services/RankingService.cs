@@ -10,8 +10,18 @@ namespace ApartmentRank.Domain.Services
 
         public IDictionary<Apartment, int> OrderByPreferences(IEnumerable<Apartment> apartments, IEnumerable<Preference> preferences)
         {
-            var ranking = new Dictionary<Apartment, int>();
+            ScoreApartments(apartments, preferences);
+            return apartments.OrderBy(a => a.score).ToDictionary(a => a, a => a.score);
+        }
 
+        public ApartmentRankResponse GetScoredApartmentRankResponse(ApartmentRankResponse apartmentRankResponse, IEnumerable<Preference> preferences)
+        {
+            ScoreApartments(apartmentRankResponse.apartments, preferences);
+            return apartmentRankResponse;
+        }
+
+        private void ScoreApartments(IEnumerable<Apartment> apartments, IEnumerable<Preference> preferences)
+        {
             foreach (var apartment in apartments)
             {
                 var score = 0;
@@ -24,12 +34,8 @@ namespace ApartmentRank.Domain.Services
                         score += preference.score;
                     }
                 }
-
                 apartment.score = score;
-                ranking.Add(apartment, score);
             }
-
-            return ranking.OrderBy(r => r.Value).ToDictionary(r => r.Key, r => r.Value);
         }
     }
 }
