@@ -1,4 +1,4 @@
-﻿namespace ApartmentRank.App.Services.InfrastructureInterfaces
+﻿namespace ApartmentRank.App.Interfaces.Infrastructure
 {
     public interface IIdealistaApi
     {
