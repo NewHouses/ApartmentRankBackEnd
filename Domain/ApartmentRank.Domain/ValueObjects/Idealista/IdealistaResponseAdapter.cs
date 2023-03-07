@@ -1,9 +1,10 @@
 ﻿using ApartmentRank.Domain.Entities;
 using ApartmentRank.Domain.Entities.Idealista;
+using ApartmentRank.Domain.Interfaces;
 
 namespace ApartmentRank.Domain.ValueObjects.Idealista
 {
-    public class IdealistaResponseAdapter
+    public class IdealistaResponseAdapter : IResponseAdapter
     {
         public readonly IdealistaResponse idealistaResponse;
 
@@ -24,6 +25,11 @@ namespace ApartmentRank.Domain.ValueObjects.Idealista
             );
            
             return new ApartmentRankResponse(apartments, idealistaResponse.total);
+        }
+
+        public string ToJson()
+        {
+            throw new NotImplementedException();
         }
     }
 }

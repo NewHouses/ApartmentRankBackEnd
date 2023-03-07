@@ -1,5 +1,5 @@
 ﻿using ApartmentRank.Domain.Entities;
-using ApartmentRank.Domain.Interfaces.DomainInterfaces;
+using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.ValueObjects;
 
 namespace ApartmentRank.Domain.Services

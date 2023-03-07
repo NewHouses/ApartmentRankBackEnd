@@ -1,4 +1,7 @@
 ﻿using ApartmentRank.Domain.Entities;
+using ApartmentRank.Domain.Entities.Idealista;
+using ApartmentRank.Domain.Services;
+using ApartmentRank.Domain.Services.Factories;
 using NUnit.Framework;
 
 namespace ApartmentRank.Domain.UnitTests
@@ -13,9 +16,9 @@ namespace ApartmentRank.Domain.UnitTests
             }
 
             [Test]
-            public void ToApartmentRankRequest()
+            public void ToApartmentRankRequestEntity()
             {
-                var apartmentRankPreferencesRequestJson = AssumeIdealistaResponsejson();
+                var apartmentRankPreferencesRequestJson = AssumeApartmentRankRequestJson();
 
                 var apartmentRankRequest = ApartmentRankRequest.FromJson(apartmentRankPreferencesRequestJson);
 
@@ -29,7 +32,30 @@ namespace ApartmentRank.Domain.UnitTests
                 Assert.That(preferences[1].score, Is.EqualTo(2));
             }
 
-            private string AssumeIdealistaResponsejson()
+            [Test]
+            public void ToIdealistaRequestEntity()
+            {
+                var apartmentRankPreferencesRequestJson = AssumeApartmentRankRequestJson();
+
+                var idealistaAdapter = new IdealistaAdapterFactory().CreateRequestAdapter(apartmentRankPreferencesRequestJson);
+                var idealistaRequest = idealistaAdapter.Convert();
+
+                Assert.That(idealistaRequest.GetType(), Is.EqualTo(new IdealistaRequest().GetType()));
+            }
+
+            [Test]
+            public void ToIdealistaRequestJson()
+            {
+                var apartmentRankPreferencesRequestJson = AssumeApartmentRankRequestJson();
+                var idealistaConnector = new Connector(new IdealistaAdapterFactory());
+                var expectedIdealistaRequestJson = "{}";
+
+                var idealistaRequestJson = idealistaConnector.TransformRequest(apartmentRankPreferencesRequestJson);
+
+                Assert.That(idealistaRequestJson, Is.EqualTo(expectedIdealistaRequestJson));
+            }
+
+            private string AssumeApartmentRankRequestJson()
             {
                 string workingDirectory = Environment.CurrentDirectory;
                 string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;

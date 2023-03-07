@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\ApartmentRank.Domain.Interfaces\ApartmentRank.Domain.Interfaces.csproj" />
     <ProjectReference Include="..\..\Domain\ApartmentRank.Domain.Services\ApartmentRank.Domain.Services.csproj" />
   </ItemGroup>
 

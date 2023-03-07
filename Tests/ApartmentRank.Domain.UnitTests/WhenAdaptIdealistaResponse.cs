@@ -1,5 +1,6 @@
 ﻿using ApartmentRank.Domain.Entities.Idealista;
-using ApartmentRank.Domain.ValueObjects.Idealista;
+using ApartmentRank.Domain.Services.Factories;
+using ApartmentRank.Domain.Services;
 using NUnit.Framework;
 
 namespace ApartmentRank.Domain.UnitTests
@@ -65,9 +66,9 @@ namespace ApartmentRank.Domain.UnitTests
         public void ToApartmentRankResponseEntity()
         {
             var idealistaResponseJson = AssumeIdealistaResponsejson();
+            var idealistaConnector = new Connector(new IdealistaAdapterFactory());
 
-            var idealistaResponse = IdealistaResponse.FromJson(idealistaResponseJson);
-            var apartmentRankResponse = new IdealistaResponseAdapter(idealistaResponse).Convert();
+            var apartmentRankResponse = idealistaConnector.TransformResponse(idealistaResponseJson);
 
             Assert.That(apartmentRankResponse.apartments.Count(), Is.EqualTo(2));
             Assert.That(apartmentRankResponse.total, Is.EqualTo(2));

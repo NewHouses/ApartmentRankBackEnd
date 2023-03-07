@@ -1,5 +1,4 @@
-﻿using ApartmentRank.Domain.Entities.Idealista;
-using ApartmentRank.Domain.ValueObjects;
+﻿using ApartmentRank.Domain.ValueObjects;
 using System.Text.Json;
 
 namespace ApartmentRank.Domain.Entities
