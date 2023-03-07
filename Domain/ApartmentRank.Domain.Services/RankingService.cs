@@ -1,6 +1,7 @@
 ﻿using ApartmentRank.Domain.Entities;
 using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.ValueObjects;
+using System.Collections.Generic;
 
 namespace ApartmentRank.Domain.Services
 {
@@ -23,19 +24,27 @@ namespace ApartmentRank.Domain.Services
         private void ScoreApartments(IEnumerable<Apartment> apartments, IEnumerable<Preference> preferences)
         {
             foreach (var apartment in apartments)
-            {
-                var score = 0;
-                foreach (var preference in preferences)
-                {
-                    var apartmentAttribute = apartment.apartmentAttributes.FirstOrDefault(aa => aa.name.Equals(preference.apartmentAttribute.name));
-
-                    if (apartmentAttribute?.added == preference.apartmentAttribute.added)
-                    {
-                        score += preference.score;
-                    }
-                }
-                apartment.score = score;
+            {             
+                apartment.score = CalculateApartmentScore(apartment, preferences);
             }
+        }
+
+        private int CalculateApartmentScore(Apartment apartment, IEnumerable<Preference> preferences)
+        {
+            var score = 0;
+
+            foreach (var preference in preferences)
+            {
+                var apartmentAttribute = apartment.apartmentAttributes
+                    .FirstOrDefault(aa => aa.name.Equals(preference.apartmentAttribute.name));
+
+                if (apartmentAttribute?.added == preference.apartmentAttribute.added)
+                {
+                    score += preference.score;
+                }
+            }
+
+            return score;
         }
     }
 }
