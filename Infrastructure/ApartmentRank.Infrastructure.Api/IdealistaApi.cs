@@ -1,5 +1,5 @@
 ﻿using ApartmentRank.App.Interfaces.Infrastructure;
-using ApartmentRank.infrastructure.EnvironmentAccess;
+using ApartmentRank.Infrastructure.EnvironmentAccess;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
@@ -7,7 +7,7 @@ namespace ApartmentRank.Infrastructure.Api
 {
     public class IdealistaApi : IIdealistaApi
     {
-        public string GetApartmentsJson()
+        public string GetApartmentsJson(string request)
         {
             var response = PostApiRequest("https://api.idealista.com/3.5/es/search",
                                            GetOauthToken(),

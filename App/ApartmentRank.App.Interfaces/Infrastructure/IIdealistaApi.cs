@@ -2,6 +2,6 @@
 {
     public interface IIdealistaApi
     {
-        public string GetApartmentsJson();
+        public string GetApartmentsJson(string request);
     }
 }

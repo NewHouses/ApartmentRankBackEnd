@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App\ApartmentRank.App.Services\ApartmentRank.App.Services.csproj" />
-    <ProjectReference Include="..\Infrastructure\ApartmentRank.infrastructure.Environment\ApartmentRank.infrastructure.EnvironmentAccess.csproj" />
+    <ProjectReference Include="..\..\App\ApartmentRank.App.Interfaces\ApartmentRank.App.Interfaces.csproj" />
+    <ProjectReference Include="..\ApartmentRank.Infrastructure.Environment\ApartmentRank.Infrastructure.EnvironmentAccess.csproj" />
   </ItemGroup>
 
 </Project>

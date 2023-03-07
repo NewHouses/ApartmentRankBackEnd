@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -18,8 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\App\ApartmentRank.App.Interfaces\ApartmentRank.App.Interfaces.csproj" />
+    <ProjectReference Include="..\..\App\ApartmentRank.App.Services\ApartmentRank.App.Services.csproj" />
     <ProjectReference Include="..\..\Domain\ApartmentRank.Domain.Services\ApartmentRank.Domain.Services.csproj" />
-    <ProjectReference Include="..\ApartmentRank.App.Interfaces\ApartmentRank.App.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

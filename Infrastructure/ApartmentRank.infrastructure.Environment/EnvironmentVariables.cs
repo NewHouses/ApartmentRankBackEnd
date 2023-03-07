@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ApartmentRank.infrastructure.EnvironmentAccess
+﻿namespace ApartmentRank.Infrastructure.EnvironmentAccess
 {
     public class EnvironmentVariables
     {
