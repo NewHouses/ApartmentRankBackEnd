@@ -1,0 +1,28 @@
+﻿{
+	"filter": {
+		"operation": "rent",
+		"propertyType": "homes",
+		"center": "42.223661,-8.730236",
+		"distance": 15000,
+		"maxPrice": 850,
+		"studio": false,
+		"bedrooms": 2,
+		"furnished": "furnished"
+	},
+	"preferences": [
+		{
+			"apartmentAttribute": {
+				"name": "hasLift",
+				"added": true
+			},
+			"score": 1
+		},
+		{
+			"apartmentAttribute": {
+				"name": "allowPets",
+				"added": true
+			},
+			"score": 2
+		}
+	]
+}

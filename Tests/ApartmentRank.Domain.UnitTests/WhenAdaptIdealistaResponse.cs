@@ -109,8 +109,8 @@ namespace ApartmentRank.Domain.UnitTests
             Assert.That(apartments[1].newDevelopment, Is.EqualTo(false));
             Assert.That(apartments[1].parkingSpace.hasParkingSpace, Is.EqualTo(true));
             Assert.That(apartments[1].parkingSpace.isParkingSpaceIncludedInPrice, Is.EqualTo(true));
-            Assert.That(apartments[0].apartmentAttributes.Single().name, Is.EqualTo("hasLift"));
-            Assert.That(apartments[0].apartmentAttributes.Single().added, Is.EqualTo(true));
+            Assert.That(apartments[1].apartmentAttributes.Single().name, Is.EqualTo("hasLift"));
+            Assert.That(apartments[1].apartmentAttributes.Single().added, Is.EqualTo(true));
         }
 
         private string AssumeIdealistaResponsejson()
