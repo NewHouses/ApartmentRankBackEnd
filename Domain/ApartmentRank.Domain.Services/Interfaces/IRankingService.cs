@@ -1,7 +1,7 @@
 ﻿using ApartmentRank.Domain.Entities;
 using ApartmentRank.Domain.ValueObjects;
 
-namespace ApartmentRank.Domain.Interfaces.DomainInterfaces
+namespace ApartmentRank.Domain.Services.Interfaces
 {
     public interface IRankingService
     {
