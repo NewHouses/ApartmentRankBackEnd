@@ -1,4 +1,14 @@
 ﻿{
+	"filter": {
+		"operation": "rent",
+		"propertyType": "homes",
+		"center": "42.223661,-8.730236",
+		"distance": 15000,
+		"maxPrice": 850,
+		"studio": false,
+		"bedrooms": 2,
+		"furnished": "furnished"
+	},
 	"preferences": [
 		{
 			"apartmentAttribute": {

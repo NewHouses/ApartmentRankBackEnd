@@ -9,19 +9,20 @@ namespace ApartmentRank.Infrastructure.Api
     {
         public string GetApartmentsJson(string request)
         {
+            var idealistaRequest = JObject.Parse(request);
             var response = PostApiRequest("https://api.idealista.com/3.5/es/search",
                                            GetOauthToken(),
                                            Array.Empty<(string, string)>(),
                                            new[] {
-                                                ("operation", "rent"),
-                                                ("propertyType", "homes"),
-                                                ("center", "42.223661,-8.730236"),
-                                                ("distance", "15000"),
+                                                ("operation", idealistaRequest.GetValue("operation").ToString()),
+                                                ("propertyType", idealistaRequest.GetValue("propertyType").ToString()),
+                                                ("center", idealistaRequest.GetValue("center").ToString()),
+                                                ("distance", idealistaRequest.GetValue("distance").ToString()),
                                                 ("maxItems", "50"),
-                                                ("maxPrice", "850"),
-                                                ("studio", "false"),
-                                                ("bedrooms", "2"),
-                                                ("furnished", "furnished"),
+                                                ("maxPrice", idealistaRequest.GetValue("maxPrice").ToString()),
+                                                ("studio", idealistaRequest.GetValue("studio").ToString()),
+                                                ("bedrooms", idealistaRequest.GetValue("bedrooms").ToString()),
+                                                ("furnished", idealistaRequest.GetValue("furnished").ToString()),
                                            });
             return response.ToString();
         }
@@ -51,6 +52,7 @@ namespace ApartmentRank.Infrastructure.Api
                 request.AddHeader(h.Item1, h.Item2);
             foreach (var p in parameters)
                 request.AddParameter(p.Item1, p.Item2);
+
             var response = client.Post(request);
             return JObject.Parse(response.Content);
         }

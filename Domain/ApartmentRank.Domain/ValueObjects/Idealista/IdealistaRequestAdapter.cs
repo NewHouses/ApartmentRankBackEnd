@@ -15,7 +15,16 @@ namespace ApartmentRank.Domain.ValueObjects.Idealista
 
         public IRequest Convert()
         {
-            return new IdealistaRequest();
+            return new IdealistaRequest(
+                    apartmentRankRequest.filter.operation,
+                    apartmentRankRequest.filter.propertyType,
+                    apartmentRankRequest.filter.center,
+                    apartmentRankRequest.filter.distance,
+                    apartmentRankRequest.filter.maxPrice,
+                    apartmentRankRequest.filter.studio,
+                    apartmentRankRequest.filter.bedrooms,
+                    apartmentRankRequest.filter.furnished
+                );
         }
 
         public string ToJson()
