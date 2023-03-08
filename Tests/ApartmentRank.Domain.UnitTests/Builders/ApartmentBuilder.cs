@@ -29,7 +29,6 @@ namespace ApartmentRank.Domain.UnitTests.Builders
                 size = size,
                 rooms = rooms,
                 bathrooms = bathrooms,
-                address = address,
                 latitude = latitude,
                 longitude = longitude,
                 parkingSpace = parkingSpace,

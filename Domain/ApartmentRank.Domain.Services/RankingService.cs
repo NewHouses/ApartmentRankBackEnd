@@ -11,17 +11,17 @@ namespace ApartmentRank.Domain.Services
 
         public IDictionary<Apartment, int> OrderByPreferences(IEnumerable<Apartment> apartments, IEnumerable<Preference> preferences)
         {
-            ScoreApartments(apartments, preferences);
+            ScoreApartments(apartments.ToArray(), preferences);
             return apartments.OrderBy(a => a.score).ToDictionary(a => a, a => a.score);
         }
 
         public ApartmentRankResponse GetScoredApartmentRankResponse(ApartmentRankResponse apartmentRankResponse, IEnumerable<Preference> preferences)
         {
-            ScoreApartments(apartmentRankResponse.apartments, preferences);
+            ScoreApartments(apartmentRankResponse.apartments.ToArray(), preferences);
             return apartmentRankResponse;
         }
 
-        private void ScoreApartments(IEnumerable<Apartment> apartments, IEnumerable<Preference> preferences)
+        private void ScoreApartments(Apartment[] apartments, IEnumerable<Preference> preferences)
         {
             foreach (var apartment in apartments)
             {             

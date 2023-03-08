@@ -8,9 +8,8 @@ namespace ApartmentRank.Domain.Services.Factories
 {
     public class IdealistaAdapterFactory : IAdapterFactory
     {
-        public IRequestAdapter CreateRequestAdapter(string apartmentRankRequestJson)
+        public IRequestAdapter CreateRequestAdapter(ApartmentRankRequest apartmentRankRequest)
         {
-            var apartmentRankRequest = ApartmentRankRequest.FromJson(apartmentRankRequestJson);
             return new IdealistaRequestAdapter(apartmentRankRequest);
         }
 

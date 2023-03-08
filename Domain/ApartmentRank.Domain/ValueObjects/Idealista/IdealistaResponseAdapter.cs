@@ -25,7 +25,7 @@ namespace ApartmentRank.Domain.ValueObjects.Idealista
             }
             );
            
-            return new ApartmentRankResponse(apartments, idealistaResponse.total);
+            return new ApartmentRankResponse(apartments.ToArray(), idealistaResponse.total);
         }
 
         public string ToJson()

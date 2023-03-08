@@ -4,6 +4,6 @@ namespace ApartmentRank.App.Interfaces
 {
     public interface ISearchApartmentsService
     {
-        public ApartmentRankResponse GetScoredApartments(string apartmentRankRequest);
+        public ApartmentRankResponse GetScoredApartments(string apartmentRankRequestJson);
     }
 }

@@ -4,7 +4,7 @@ namespace ApartmentRank.Domain.Services.Interfaces
 {
     public interface IConnector
     {
-        public string TransformRequest(string apartmentRankRequest);
+        public string TransformRequest(ApartmentRankRequest apartmentRankRequest);
 
         public ApartmentRankResponse TransformResponse(string apiResponse);
     }

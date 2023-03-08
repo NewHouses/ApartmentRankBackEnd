@@ -12,7 +12,7 @@ namespace ApartmentRank.Domain.Services
             this.adapterFactory = adapterFactory;
         }
 
-        public string TransformRequest(string apartmentRankRequest)
+        public string TransformRequest(ApartmentRankRequest apartmentRankRequest)
         {
             var requestAdapter = GetRequestAdapter(apartmentRankRequest);
             return TransformToApiRequest(requestAdapter);
@@ -24,9 +24,9 @@ namespace ApartmentRank.Domain.Services
             return TransformToApartmentRankResponse(responseAdapter);
         }
 
-        private IRequestAdapter GetRequestAdapter(string apartmentRankRequestJson)
+        private IRequestAdapter GetRequestAdapter(ApartmentRankRequest apartmentRankRequest)
         {
-            return adapterFactory.CreateRequestAdapter(apartmentRankRequestJson);
+            return adapterFactory.CreateRequestAdapter(apartmentRankRequest);
         }
 
         private static string TransformToApiRequest(IRequestAdapter requestAdapter)

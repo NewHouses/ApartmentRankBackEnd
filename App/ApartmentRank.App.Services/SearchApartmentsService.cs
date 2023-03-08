@@ -4,7 +4,6 @@ using ApartmentRank.Domain.Entities;
 using ApartmentRank.Domain.Services;
 using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.Services.Factories;
-using ApartmentRank.Domain.ValueObjects;
 
 namespace ApartmentRank.App.Services
 {
@@ -21,13 +20,15 @@ namespace ApartmentRank.App.Services
             this.rankingService = rankingService;
         }
 
-        public ApartmentRankResponse GetScoredApartments(string apartmentRankRequest)
+        public ApartmentRankResponse GetScoredApartments(string apartmentRankRequestJson)
         {
+            var apartmentRankRequest = ApartmentRankRequest.FromJson(apartmentRankRequestJson);
             var apartmentRankResponse = GetApiResponse(apartmentRankRequest, idealistaConnector, idealistaApi);
-            return rankingService.GetScoredApartmentRankResponse(apartmentRankResponse, Array.Empty<Preference>());
+            return rankingService.GetScoredApartmentRankResponse(apartmentRankResponse, apartmentRankRequest.preferences);
         }
 
-        private ApartmentRankResponse GetApiResponse(string apartmentRankRequest, IConnector connector, IIdealistaApi api)
+
+        private ApartmentRankResponse GetApiResponse(ApartmentRankRequest apartmentRankRequest, IConnector connector, IIdealistaApi api)
         {
             var requestJson = connector.TransformRequest(apartmentRankRequest);
             var apiResponse = api.GetApartmentsJson(requestJson);
