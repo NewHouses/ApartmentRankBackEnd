@@ -26,12 +26,9 @@ namespace ApartmentRank.Domain.Entities
         public ParkingSpace parkingSpace { get; set; }
         public IEnumerable<ApartmentAttribute> apartmentAttributes { get; set; }
 
-        public Apartment(Guid id, string name, string description, IEnumerable<ApartmentAttribute> apartmentAttributes)
+        public Apartment()
         {
-            this.id = id;
-            this.name = name;
-            this.description = description;
-            this.apartmentAttributes = apartmentAttributes;
+            this.id = Guid.NewGuid();
         }
 
         public Apartment(string name, string description, string imageUrl,
