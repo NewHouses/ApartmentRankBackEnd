@@ -1,7 +1,6 @@
 ﻿using ApartmentRank.Domain.Entities;
 using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.ValueObjects;
-using System.Collections.Generic;
 
 namespace ApartmentRank.Domain.Services
 {

@@ -1,4 +1,6 @@
-﻿namespace ApartmentRank.Domain.Entities
+﻿using System.Text.Json;
+
+namespace ApartmentRank.Domain.Entities
 {
     public class ApartmentRankResponse
     {
@@ -9,6 +11,11 @@
         {
             this.apartments = apartments;
             this.total = total;
+        }
+
+        public string ToJson()
+        {
+            return JsonSerializer.Serialize(this);
         }
     }
 }
