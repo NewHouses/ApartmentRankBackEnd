@@ -5,6 +5,7 @@ using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.Services;
 using ApartmentRank.Infrastructure.Api;
 using ApartmentRank.Domain.Services.Factories;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,14 @@ builder.Services.AddTransient<IAdapterFactory, IdealistaAdapterFactory>();
 builder.Services.AddTransient<IConnector, Connector>();
 builder.Services.AddScoped<IIdealistaApi, IdealistaApi>();
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "ApartmentRankFrontendPolicy",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200");
+        });
+});
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -30,6 +38,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthorization();
 
