@@ -45,7 +45,8 @@ namespace ApartmentRank.Domain.UnitTests
             {
                 var apartmentRankPreferencesRequestJson = AssumeApartmentRankRequestJson();
 
-                var idealistaAdapter = new IdealistaAdapterFactory().CreateRequestAdapter(apartmentRankPreferencesRequestJson);
+                var apartmentRankPreferencesRequest = ApartmentRankRequest.FromJson(apartmentRankPreferencesRequestJson);
+                var idealistaAdapter = new IdealistaAdapterFactory().CreateRequestAdapter(apartmentRankPreferencesRequest);
                 var idealistaRequest = (IdealistaRequest) idealistaAdapter.Convert();
 
                 Assert.That(idealistaRequest.operation, Is.EqualTo("rent"));
@@ -64,8 +65,9 @@ namespace ApartmentRank.Domain.UnitTests
                 var apartmentRankPreferencesRequestJson = AssumeApartmentRankRequestJson();
                 var idealistaConnector = new Connector(new IdealistaAdapterFactory());
                 var expectedIdealistaRequestJson = "{\"operation\":\"rent\",\"propertyType\":\"homes\",\"center\":\"42.223661,-8.730236\",\"distance\":15000,\"maxPrice\":850,\"studio\":false,\"bedrooms\":2,\"furnished\":\"furnished\"}";
+                var apartmentRankPreferencesRequest = ApartmentRankRequest.FromJson(apartmentRankPreferencesRequestJson);
 
-                var idealistaRequestJson = idealistaConnector.TransformRequest(apartmentRankPreferencesRequestJson);
+                var idealistaRequestJson = idealistaConnector.TransformRequest(apartmentRankPreferencesRequest);
 
                 Assert.That(idealistaRequestJson, Is.EqualTo(expectedIdealistaRequestJson));
             }
