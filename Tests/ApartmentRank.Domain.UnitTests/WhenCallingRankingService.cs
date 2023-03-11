@@ -23,8 +23,8 @@ namespace ApartmentRank.Domain.UnitTests
         {
             var apartments = AssumeApartments();
             var preferences = new Preference[] {
-                new Preference(new ValueObjects.ApartmentAttribute("hasWashMachine", true), 1),
-                new Preference(new ValueObjects.ApartmentAttribute("allowPets", true), 1)
+                new Preference("hasWashMachine", 1),
+                new Preference("allowPets", 1)
             };
 
             var apartmentRanking = rankingService.OrderByPreferences(apartments, preferences).ToArray();
@@ -43,8 +43,8 @@ namespace ApartmentRank.Domain.UnitTests
             var apartments = AssumeApartments();
             var apartmentRankResponse = new ApartmentRankResponse(apartments, apartments.Length);
             var preferences = new Preference[] {
-                new Preference(new ValueObjects.ApartmentAttribute("hasWashMachine", true), 1),
-                new Preference(new ValueObjects.ApartmentAttribute("allowPets", true), 1)
+                new Preference("hasWashMachine", 1),
+                new Preference("allowPets", 1)
             };
 
             var scoredApartmentRankResponse = rankingService.GetScoredApartmentRankResponse(apartmentRankResponse, preferences);

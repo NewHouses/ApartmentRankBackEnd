@@ -2,12 +2,12 @@
 {
     public class Preference
     {
-        public ApartmentAttribute apartmentAttribute { get; set; }
+        public string name { get; set; }
         public int score { get; set; }
 
-        public Preference(ApartmentAttribute apartmentAttribute, int score)
+        public Preference(string name, int score)
         {
-            this.apartmentAttribute = apartmentAttribute;
+            this.name = name;
             this.score = score;
         }
     }

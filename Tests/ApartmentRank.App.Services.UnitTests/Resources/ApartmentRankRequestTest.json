@@ -11,17 +11,11 @@
 	},
 	"preferences": [
 		{
-			"apartmentAttribute": {
-				"name": "hasLift",
-				"added": true
-			},
+			"name": "hasLift",
 			"score": 1
 		},
 		{
-			"apartmentAttribute": {
-				"name": "allowPets",
-				"added": true
-			},
+			"name": "allowPets",
 			"score": 2
 		}
 	]

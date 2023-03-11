@@ -32,11 +32,9 @@ namespace ApartmentRank.Domain.UnitTests
                 Assert.That(apartmentRankRequest.filter.furnished, Is.EqualTo("furnished"));
                 Assert.That(apartmentRankRequest.preferences.Count(), Is.EqualTo(2));
                 var preferences = apartmentRankRequest.preferences.ToArray();
-                Assert.That(preferences[0].apartmentAttribute.name, Is.EqualTo("hasLift"));
-                Assert.That(preferences[0].apartmentAttribute.added, Is.EqualTo(true));
+                Assert.That(preferences[0].name, Is.EqualTo("hasLift"));
                 Assert.That(preferences[0].score, Is.EqualTo(1));
-                Assert.That(preferences[1].apartmentAttribute.name, Is.EqualTo("allowPets"));
-                Assert.That(preferences[1].apartmentAttribute.added, Is.EqualTo(true));
+                Assert.That(preferences[1].name, Is.EqualTo("allowPets"));
                 Assert.That(preferences[1].score, Is.EqualTo(2));
             }
 

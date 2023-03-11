@@ -88,7 +88,8 @@ namespace ApartmentRank.Domain.UnitTests
             Assert.That(apartments[0].link, Is.EqualTo("https://www.idealista.com/inmueble/100633847/"));
             Assert.That(apartments[0].status, Is.EqualTo("good"));
             Assert.That(apartments[0].newDevelopment, Is.EqualTo(false));
-            Assert.That(apartments[0].parkingSpace, Is.EqualTo(null));
+            Assert.That(apartments[0].parkingSpace.hasParkingSpace, Is.EqualTo(false));
+            Assert.That(apartments[0].parkingSpace.isParkingSpaceIncludedInPrice, Is.EqualTo(false));
             Assert.That(apartments[0].apartmentAttributes.Single().name, Is.EqualTo("hasLift"));
             Assert.That(apartments[0].apartmentAttributes.Single().added, Is.EqualTo(true));
 
