@@ -1,22 +1,30 @@
 ﻿using ApartmentRank.Domain.Entities;
 using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.ValueObjects;
+using System.Collections.Generic;
 
 namespace ApartmentRank.Domain.Services
 {
     public class RankingService : IRankingService
     {
+        private static double minPrice;
+        private static double maxPrice;
+        private static int priceWeighing;
+
         public RankingService() { }
 
         public IDictionary<Apartment, int> OrderByPreferences(IEnumerable<Apartment> apartments, IEnumerable<Preference> preferences)
         {
+            SetParameters(apartments.ToArray(), preferences);
             ScoreApartments(apartments.ToArray(), preferences);
             return apartments.OrderBy(a => a.score).ToDictionary(a => a, a => a.score);
         }
 
         public ApartmentRankResponse GetScoredApartmentRankResponse(ApartmentRankResponse apartmentRankResponse, IEnumerable<Preference> preferences)
         {
-            ScoreApartments(apartmentRankResponse.apartments.ToArray(), preferences);
+            var apartments = apartmentRankResponse.apartments.ToArray();
+            SetParameters(apartments, preferences);
+            ScoreApartments(apartments, preferences);
             return apartmentRankResponse;
         }
 
@@ -26,6 +34,19 @@ namespace ApartmentRank.Domain.Services
             {             
                 apartment.score = CalculateApartmentScore(apartment, preferences);
             }
+        }
+
+        private static void SetParameters(Apartment[] apartments, IEnumerable<Preference> preferences)
+        {
+            var pricePreference = preferences.FirstOrDefault(p => p.name.Equals("price"));
+            SetPriceParameters(apartments, pricePreference);
+        }
+
+        private static void SetPriceParameters(Apartment[] apartments, Preference pricePreference)
+        {
+            minPrice = apartments.Min(apartments => apartments.price);
+            maxPrice = apartments.Max(apartments => apartments.price);
+            priceWeighing = pricePreference != null ? pricePreference.score + 1 : 6;
         }
 
         private int CalculateApartmentScore(Apartment apartment, IEnumerable<Preference> preferences)
@@ -53,23 +74,9 @@ namespace ApartmentRank.Domain.Services
 
         public static int PriceScore(double price)
         {
-            switch (price)
-            {
-                case < 600.0:
-                    return 6;
-                case < 650.0:
-                    return 5;
-                case < 700.0:
-                    return 4;
-                case < 750.0:
-                    return 3;
-                case < 800.0:
-                    return 2;
-                case < 850.0:
-                    return 1;
-                default: break;
-            };
-            return 0;
+            var priceRank = (maxPrice - minPrice) / priceWeighing;
+            var score = (int)((maxPrice - price) / priceRank);
+            return score;
         }
 
         public static int SizeScore(double size)

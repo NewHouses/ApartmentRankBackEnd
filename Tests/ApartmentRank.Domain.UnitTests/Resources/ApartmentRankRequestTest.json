@@ -11,12 +11,8 @@
 	},
 	"preferences": [
 		{
-			"name": "hasLift",
-			"score": 1
-		},
-		{
-			"name": "allowPets",
-			"score": 2
+			"name": "price",
+			"score": 5
 		}
 	]
 }

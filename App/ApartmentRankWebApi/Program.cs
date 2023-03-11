@@ -5,7 +5,6 @@ using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.Services;
 using ApartmentRank.Infrastructure.Api;
 using ApartmentRank.Domain.Services.Factories;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
