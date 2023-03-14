@@ -7,7 +7,7 @@ namespace ApartmentRank.Domain.Entities
     {
         public Filter filter { get; set; }
 
-        public IEnumerable<Preference> preferences { get; set; }
+        public PreferenceTemplate preferenceTemplate { get; set; }
 
         public static ApartmentRankRequest FromJson(string request)
         {

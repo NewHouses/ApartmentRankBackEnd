@@ -22,9 +22,9 @@ namespace ApartmentRank.Domain.UnitTests
         public void GetApartmentRankingOrderWithoutGivenPreferences()
         {
             var apartments = AssumeApartments();
-            var preferences = Array.Empty<Preference>();
+            var preferenceTemplate = new PreferenceTemplate("EmptyPreferenceTemplate", Array.Empty<Preference>(), Array.Empty<PreferenceArea>());
 
-            var apartmentRanking = rankingService.OrderByPreferences(apartments, preferences).ToArray();
+            var apartmentRanking = rankingService.OrderByPreferences(apartments, preferenceTemplate).ToArray();
 
             Assert.That(apartmentRanking[0].Key.id, Is.EqualTo(apartments[1].id));
             Assert.That(apartmentRanking[0].Value, Is.EqualTo(0));
@@ -44,8 +44,9 @@ namespace ApartmentRank.Domain.UnitTests
                 new Preference("size", 5),
                 new Preference("allowPets", 1)
             };
+            var preferenceTemplate = new PreferenceTemplate("PreferenceTemplate-1", preferences, Array.Empty<PreferenceArea>());
 
-            var apartmentRanking = rankingService.OrderByPreferences(apartments, preferences).ToArray();
+            var apartmentRanking = rankingService.OrderByPreferences(apartments, preferenceTemplate).ToArray();
 
             Assert.That(apartmentRanking[0].Key.id, Is.EqualTo(apartments[1].id));
             Assert.That(apartmentRanking[0].Value, Is.EqualTo(0));
@@ -65,8 +66,9 @@ namespace ApartmentRank.Domain.UnitTests
                 new Preference("size", 5),
                 new Preference("allowPets", 1)
             };
+            var preferenceTemplate = new PreferenceTemplate("PreferenceTemplate-1", preferences, Array.Empty<PreferenceArea>());
 
-            var scoredApartmentRankResponse = rankingService.GetScoredApartmentRankResponse(apartmentRankResponse, preferences);
+            var scoredApartmentRankResponse = rankingService.GetScoredApartmentRankResponse(apartmentRankResponse, preferenceTemplate);
 
             Assert.That(scoredApartmentRankResponse.apartments.Count(), Is.EqualTo(3));
             var scoredApartments = scoredApartmentRankResponse.apartments.ToArray();

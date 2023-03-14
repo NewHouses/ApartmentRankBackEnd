@@ -24,7 +24,7 @@ namespace ApartmentRank.App.Services
         {
             var apartmentRankRequest = ApartmentRankRequest.FromJson(apartmentRankRequestJson);
             var apartmentRankResponse = GetApiResponse(apartmentRankRequest, idealistaConnector, idealistaApi);
-            return rankingService.GetScoredApartmentRankResponse(apartmentRankResponse, apartmentRankRequest.preferences);
+            return rankingService.GetScoredApartmentRankResponse(apartmentRankResponse, apartmentRankRequest.preferenceTemplate);
         }
 
         private ApartmentRankResponse GetApiResponse(ApartmentRankRequest apartmentRankRequest, IConnector connector, IIdealistaApi api)

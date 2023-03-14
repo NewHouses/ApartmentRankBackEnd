@@ -30,12 +30,14 @@ namespace ApartmentRank.Domain.UnitTests
                 Assert.That(apartmentRankRequest.filter.studio, Is.EqualTo(false));
                 Assert.That(apartmentRankRequest.filter.bedrooms, Is.EqualTo(2));
                 Assert.That(apartmentRankRequest.filter.furnished, Is.EqualTo("furnished"));
-                Assert.That(apartmentRankRequest.preferences.Count(), Is.EqualTo(2));
-                var preferences = apartmentRankRequest.preferences.ToArray();
+                Assert.That(apartmentRankRequest.preferenceTemplate.name, Is.EqualTo("preference-template-1"));
+                Assert.That(apartmentRankRequest.preferenceTemplate.preferences.Count(), Is.EqualTo(2));
+                var preferences = apartmentRankRequest.preferenceTemplate.preferences.ToArray();
                 Assert.That(preferences[0].name, Is.EqualTo("price"));
                 Assert.That(preferences[0].score, Is.EqualTo(5));
                 Assert.That(preferences[1].name, Is.EqualTo("size"));
                 Assert.That(preferences[1].score, Is.EqualTo(3));
+                Assert.That(apartmentRankRequest.preferenceTemplate.preferenceAreas.Count(), Is.EqualTo(1));
             }
 
             [Test]

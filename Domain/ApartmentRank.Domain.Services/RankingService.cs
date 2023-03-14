@@ -18,34 +18,34 @@ namespace ApartmentRank.Domain.Services
 
         public RankingService() { }
 
-        public IDictionary<Apartment, int> OrderByPreferences(IEnumerable<Apartment> apartments, IEnumerable<Preference> preferences)
+        public IDictionary<Apartment, int> OrderByPreferences(IEnumerable<Apartment> apartments, PreferenceTemplate preferenceTemplate)
         {
-            SetParameters(apartments.ToArray(), preferences);
-            ScoreApartments(apartments.ToArray(), preferences);
+            SetParameters(apartments.ToArray(), preferenceTemplate);
+            ScoreApartments(apartments.ToArray(), preferenceTemplate);
             return apartments.OrderBy(a => a.score).ToDictionary(a => a, a => a.score);
         }
 
-        public ApartmentRankResponse GetScoredApartmentRankResponse(ApartmentRankResponse apartmentRankResponse, IEnumerable<Preference> preferences)
+        public ApartmentRankResponse GetScoredApartmentRankResponse(ApartmentRankResponse apartmentRankResponse, PreferenceTemplate preferenceTemplate)
         {
             var apartments = apartmentRankResponse.apartments.ToArray();
-            SetParameters(apartments, preferences);
-            ScoreApartments(apartments, preferences);
+            SetParameters(apartments, preferenceTemplate);
+            ScoreApartments(apartments, preferenceTemplate);
             return apartmentRankResponse;
         }
 
-        private void ScoreApartments(Apartment[] apartments, IEnumerable<Preference> preferences)
+        private void ScoreApartments(Apartment[] apartments, PreferenceTemplate preferenceTemplate)
         {
             foreach (var apartment in apartments)
             {             
-                apartment.score = CalculateApartmentScore(apartment, preferences);
+                apartment.score = CalculateApartmentScore(apartment, preferenceTemplate);
             }
         }
 
-        private static void SetParameters(Apartment[] apartments, IEnumerable<Preference> preferences)
+        private static void SetParameters(Apartment[] apartments, PreferenceTemplate preferenceTemplate)
         {
-            var pricePreference = preferences.FirstOrDefault(p => p.name.Equals("price"));
+            var pricePreference = preferenceTemplate.preferences.FirstOrDefault(p => p.name.Equals("price"));
             SetPriceParameters(apartments, pricePreference);
-            var sizePreference = preferences.FirstOrDefault(p => p.name.Equals("size"));
+            var sizePreference = preferenceTemplate.preferences.FirstOrDefault(p => p.name.Equals("size"));
             SetSizeParameters(apartments, sizePreference);
         }
 
@@ -63,7 +63,7 @@ namespace ApartmentRank.Domain.Services
             sizeWeighing = sizePreference != null ? sizePreference.score + 1 : 6;
         }
 
-        private int CalculateApartmentScore(Apartment apartment, IEnumerable<Preference> preferences)
+        private int CalculateApartmentScore(Apartment apartment, PreferenceTemplate preferenceTemplate)
         {
             var score = PriceScore(apartment.price) 
                 + SizeScore(apartment.size) 
@@ -72,7 +72,7 @@ namespace ApartmentRank.Domain.Services
                 + (apartment.rooms > 1 ? 2 : 0)
                 + (apartment.parkingSpace.hasParkingSpace && apartment.parkingSpace.isParkingSpaceIncludedInPrice ? 1 : 0);
 
-            foreach (var preference in preferences)
+            foreach (var preference in preferenceTemplate.preferences)
             {
                 var apartmentAttribute = apartment.apartmentAttributes
                     .FirstOrDefault(aa => aa.name.Equals(preference.name));

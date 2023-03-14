@@ -9,14 +9,51 @@
 		"bedrooms": 2,
 		"furnished": "furnished"
 	},
-	"preferences": [
-		{
-			"name": "price",
-			"score": 5
-		},
-		{
-			"name": "size",
-			"score": 3
-		}
-	]
+	"preferenceTemplate": {
+		"name": "preference-template-1",
+		"preferences": [
+			{
+				"name": "price",
+				"score": 5
+			},
+			{
+				"name": "size",
+				"score": 3
+			}
+		],
+		"preferenceAreas": [
+			{
+				"area": {
+					"name": "A Miñoca",
+					"path": [
+						{
+							"lat": 42.2187918,
+							"lng": -8.749664
+						},
+						{
+							"lat": 42.2108457,
+							"lng": -8.7515093
+						},
+						{
+							"lat": 42.2197771,
+							"lng": -8.7457158
+						},
+						{
+							"lat": 42.2108457,
+							"lng": -8.7325408
+						},
+						{
+							"lat": 42.2215886,
+							"lng": -8.7337424
+						},
+						{
+							"lat": 42.2187918,
+							"lng": -8.749664
+						}
+					]
+				},
+				"score": 5
+			}
+		]
+	}
 }
