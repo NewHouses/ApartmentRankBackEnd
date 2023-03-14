@@ -46,7 +46,7 @@ namespace ApartmentRank.App.Services
             Assert.That(apartments[0].parkingSpace.isParkingSpaceIncludedInPrice, Is.EqualTo(false));
             Assert.That(apartments[0].apartmentAttributes.Single().name, Is.EqualTo("hasLift"));
             Assert.That(apartments[0].apartmentAttributes.Single().added, Is.EqualTo(true));
-            Assert.That(apartments[0].score, Is.EqualTo(4));
+            Assert.That(apartments[0].score, Is.EqualTo(6));
 
             Assert.That(apartments[1].name, Is.EqualTo("Piso en Calle de Tomás Paredes, 1 Coia, Vigo"));
             Assert.That(apartments[1].description, Is.EqualTo("Zona Bouzas -Tomas Paredes edificio en piedra con muy buenas calidades, vivienda distribuida en dos dormitorios y dos baños uno con bañera en habitación principal y otro con ducha, dispone de cocina amplia totalmente equipada con una zona de lavadero y una pequeña terraza. Las habitaciones con armarios empotrados hasta el techo. Calefacción individual. Plaza de garaje en primer sotano amplia con acceso directo al piso, trastero en el bajo cubierta. La vivienda se entrega amueblada a excepción de una habitación que se podria negociar, tambien posibilidad de retirar algún mueble. NO se admiten mascotas."));
@@ -67,7 +67,7 @@ namespace ApartmentRank.App.Services
             Assert.That(apartments[1].parkingSpace.isParkingSpaceIncludedInPrice, Is.EqualTo(true));
             Assert.That(apartments[1].apartmentAttributes.Single().name, Is.EqualTo("hasLift"));
             Assert.That(apartments[1].apartmentAttributes.Single().added, Is.EqualTo(true));
-            Assert.That(apartments[1].score, Is.EqualTo(12));
+            Assert.That(apartments[1].score, Is.EqualTo(10));
         }
 
         private string AssumeApartmentRankRequestJson()

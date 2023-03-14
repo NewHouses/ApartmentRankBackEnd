@@ -13,6 +13,10 @@
 		{
 			"name": "price",
 			"score": 5
+		},
+		{
+			"name": "size",
+			"score": 3
 		}
 	]
 }

@@ -2,6 +2,7 @@
 using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.ValueObjects;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ApartmentRank.Domain.Services
 {
@@ -10,6 +11,10 @@ namespace ApartmentRank.Domain.Services
         private static double minPrice;
         private static double maxPrice;
         private static int priceWeighing;
+
+        private static double minSize;
+        private static double maxSize;
+        private static int sizeWeighing;
 
         public RankingService() { }
 
@@ -40,6 +45,8 @@ namespace ApartmentRank.Domain.Services
         {
             var pricePreference = preferences.FirstOrDefault(p => p.name.Equals("price"));
             SetPriceParameters(apartments, pricePreference);
+            var sizePreference = preferences.FirstOrDefault(p => p.name.Equals("size"));
+            SetSizeParameters(apartments, sizePreference);
         }
 
         private static void SetPriceParameters(Apartment[] apartments, Preference pricePreference)
@@ -47,6 +54,13 @@ namespace ApartmentRank.Domain.Services
             minPrice = apartments.Min(apartments => apartments.price);
             maxPrice = apartments.Max(apartments => apartments.price);
             priceWeighing = pricePreference != null ? pricePreference.score + 1 : 6;
+        }
+
+        private static void SetSizeParameters(Apartment[] apartments, Preference sizePreference)
+        {
+            minSize = apartments.Min(apartments => apartments.size);
+            maxSize = apartments.Max(apartments => apartments.size);
+            sizeWeighing = sizePreference != null ? sizePreference.score + 1 : 6;
         }
 
         private int CalculateApartmentScore(Apartment apartment, IEnumerable<Preference> preferences)
@@ -81,17 +95,9 @@ namespace ApartmentRank.Domain.Services
 
         public static int SizeScore(double size)
         {
-            switch (size)
-            {
-                case > 89.0:
-                    return 3;
-                case > 69.0:
-                    return 2;
-                case > 59.0:
-                    return 1;
-                default: break;
-            };
-            return 0;
+            var sizeRank = (maxSize - minSize) / sizeWeighing;
+            var score = (int)((size - minSize) / sizeRank);
+            return score;
         }
 
         public static int LocationScore(double lon, double lat)
