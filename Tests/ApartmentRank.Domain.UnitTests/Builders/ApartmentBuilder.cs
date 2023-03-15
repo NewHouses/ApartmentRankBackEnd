@@ -128,7 +128,7 @@ namespace ApartmentRank.Domain.UnitTests.Builders
                     .WithSize(80)
                     .WithRooms(2)
                     .WithBathrooms(2)
-                    .WithLatitudeAndLongitude(42.2187919, -8.749663)
+                    .WithLatitudeAndLongitude(42.21781108205321, -8.7400616077565)
                     .WithParkingSpace(new ParkingSpace() 
                     { 
                         hasParkingSpace = true,

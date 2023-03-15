@@ -38,6 +38,10 @@ namespace ApartmentRank.Domain.UnitTests
                 Assert.That(preferences[1].name, Is.EqualTo("size"));
                 Assert.That(preferences[1].score, Is.EqualTo(3));
                 Assert.That(apartmentRankRequest.preferenceTemplate.preferenceAreas.Count(), Is.EqualTo(1));
+                var preferenceAreas = apartmentRankRequest.preferenceTemplate.preferenceAreas.ToArray();
+                Assert.That(preferenceAreas[0].area.name, Is.EqualTo("A Miñoca"));
+                Assert.That(preferenceAreas[0].area.path.Count(), Is.EqualTo(6));
+                Assert.That(preferenceAreas[0].score, Is.EqualTo(5));
             }
 
             [Test]
