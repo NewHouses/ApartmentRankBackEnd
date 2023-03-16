@@ -6,6 +6,6 @@ namespace ApartmentRank.Domain.Services.Interfaces
     {
         public string TransformRequest(ApartmentRankRequest apartmentRankRequest);
 
-        public ApartmentRankResponse TransformResponse(string apiResponse);
+        public ApartmentRankResponse TransformResponse(string[] apiResponse);
     }
 }

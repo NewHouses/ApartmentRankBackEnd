@@ -7,6 +7,6 @@ namespace ApartmentRank.Domain.Services.Interfaces
     {
         public IRequestAdapter CreateRequestAdapter(ApartmentRankRequest apartmentRankRequest);
 
-        public IResponseAdapter CreateResponseAdapter(string apiResponse);
+        public IResponseAdapter CreateResponseAdapter(string[] apiResponse);
     }
 }

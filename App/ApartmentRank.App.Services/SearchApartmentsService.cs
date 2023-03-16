@@ -31,7 +31,7 @@ namespace ApartmentRank.App.Services
         {
             var requestJson = connector.TransformRequest(apartmentRankRequest);
             var apiResponse = api.GetApartmentsJson(requestJson);
-            return connector.TransformResponse(apiResponse);
+            return connector.TransformResponse(apiResponse.ToArray());
         }
     }
 }

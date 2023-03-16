@@ -68,7 +68,7 @@ namespace ApartmentRank.Domain.UnitTests
             var idealistaResponseJson = AssumeIdealistaResponsejson();
             var idealistaConnector = new Connector(new IdealistaAdapterFactory());
 
-            var apartmentRankResponse = idealistaConnector.TransformResponse(idealistaResponseJson);
+            var apartmentRankResponse = idealistaConnector.TransformResponse(new[] { idealistaResponseJson });
 
             Assert.That(apartmentRankResponse.apartments.Count(), Is.EqualTo(2));
             Assert.That(apartmentRankResponse.total, Is.EqualTo(2));

@@ -2,12 +2,13 @@
 using ApartmentRank.Infrastructure.EnvironmentAccess;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using System.Runtime.CompilerServices;
 
 namespace ApartmentRank.Infrastructure.Api
 {
     public class IdealistaApi : IIdealistaApi
     {
-        public string GetApartmentsJson(string request)
+        public IEnumerable<string> GetApartmentsJson(string request)
         {
             var idealistaRequest = JObject.Parse(request);
             var response = PostApiRequest("https://api.idealista.com/3.5/es/search",
@@ -19,12 +20,36 @@ namespace ApartmentRank.Infrastructure.Api
                                                 ("center", idealistaRequest.GetValue("center").ToString()),
                                                 ("distance", idealistaRequest.GetValue("distance").ToString()),
                                                 ("maxItems", "50"),
+                                                ("numPage", "1"),
                                                 ("maxPrice", idealistaRequest.GetValue("maxPrice").ToString()),
                                                 ("studio", idealistaRequest.GetValue("studio").ToString()),
                                                 ("bedrooms", idealistaRequest.GetValue("bedrooms").ToString()),
                                                 ("furnished", idealistaRequest.GetValue("furnished").ToString()),
                                            });
-            return response.ToString();
+            if(bool.Parse(response.GetValue("paginable").ToString()))
+            {
+                var totalPages = int.Parse(response.GetValue("totalPages").ToString());
+                for(int numPage = 2; numPage <= totalPages; numPage++)
+                {
+                    yield return PostApiRequest("https://api.idealista.com/3.5/es/search",
+                                           GetOauthToken(),
+                                           Array.Empty<(string, string)>(),
+                                           new[] {
+                                                ("operation", idealistaRequest.GetValue("operation").ToString()),
+                                                ("propertyType", idealistaRequest.GetValue("propertyType").ToString()),
+                                                ("center", idealistaRequest.GetValue("center").ToString()),
+                                                ("distance", idealistaRequest.GetValue("distance").ToString()),
+                                                ("maxItems", "50"),
+                                                ("numPage", numPage.ToString()),
+                                                ("maxPrice", idealistaRequest.GetValue("maxPrice").ToString()),
+                                                ("studio", idealistaRequest.GetValue("studio").ToString()),
+                                                ("bedrooms", idealistaRequest.GetValue("bedrooms").ToString()),
+                                                ("furnished", idealistaRequest.GetValue("furnished").ToString()),
+                                           }).ToString();
+                }
+            }
+
+            yield return response.ToString();
         }
 
         private static string GetOauthToken()

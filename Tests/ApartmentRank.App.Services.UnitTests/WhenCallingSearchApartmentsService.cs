@@ -14,7 +14,7 @@ namespace ApartmentRank.App.Services
         public void Setup()
         {
             idealistaApi = Substitute.For<IIdealistaApi>();
-            idealistaApi.GetApartmentsJson(Arg.Any<string>()).ReturnsForAnyArgs(AssumeIdealistaResponsejson());
+            idealistaApi.GetApartmentsJson(Arg.Any<string>()).ReturnsForAnyArgs(new[] { AssumeIdealistaResponsejson() });
         }
 
         [Test]

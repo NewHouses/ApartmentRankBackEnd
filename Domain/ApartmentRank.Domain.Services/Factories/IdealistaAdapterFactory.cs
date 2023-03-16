@@ -13,10 +13,15 @@ namespace ApartmentRank.Domain.Services.Factories
             return new IdealistaRequestAdapter(apartmentRankRequest);
         }
 
-        public IResponseAdapter CreateResponseAdapter(string apiResponse)
+        public IResponseAdapter CreateResponseAdapter(string[] apiResponses)
         {
-            var idealistaResponse = IdealistaResponse.FromJson(apiResponse);
-            return new IdealistaResponseAdapter(idealistaResponse);
+            var idealistaResponses = new List<IdealistaResponse>();
+            foreach(var apiResponse in apiResponses)
+            {
+                var idealistaResponse = IdealistaResponse.FromJson(apiResponse);
+                idealistaResponses.Add(idealistaResponse);
+            }
+            return new IdealistaResponseAdapter(idealistaResponses);
         }
     }
 }

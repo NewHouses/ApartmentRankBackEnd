@@ -18,7 +18,7 @@ namespace ApartmentRank.Domain.Services
             return TransformToApiRequest(requestAdapter);
         }
 
-        public ApartmentRankResponse TransformResponse(string apiResponse)
+        public ApartmentRankResponse TransformResponse(string[] apiResponse)
         {
             var responseAdapter = GetResponseAdapter(apiResponse);
             return TransformToApartmentRankResponse(responseAdapter);
@@ -34,7 +34,7 @@ namespace ApartmentRank.Domain.Services
             return requestAdapter.ToJson();
         }
 
-        private IResponseAdapter GetResponseAdapter(string apiResponse)
+        private IResponseAdapter GetResponseAdapter(string[] apiResponse)
         {
             return adapterFactory.CreateResponseAdapter(apiResponse);
         }
