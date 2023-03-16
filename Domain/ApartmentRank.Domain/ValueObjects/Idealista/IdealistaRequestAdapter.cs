@@ -19,7 +19,7 @@ namespace ApartmentRank.Domain.ValueObjects.Idealista
                     apartmentRankRequest.filter.operation,
                     apartmentRankRequest.filter.propertyType,
                     apartmentRankRequest.filter.center,
-                    apartmentRankRequest.filter.distance,
+                    (int)apartmentRankRequest.filter.distance,
                     apartmentRankRequest.filter.maxPrice,
                     apartmentRankRequest.filter.studio,
                     apartmentRankRequest.filter.bedrooms,
