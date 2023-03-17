@@ -5,6 +5,8 @@ using ApartmentRank.Domain.Services.Interfaces;
 using ApartmentRank.Domain.Services;
 using ApartmentRank.Infrastructure.Api;
 using ApartmentRank.Domain.Services.Factories;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.IO.Compression;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,16 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("http://localhost:4200");
         });
 });
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<GzipCompressionProvider>();
+});
+
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.SmallestSize;
+});
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -38,6 +50,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors();
+
+app.UseResponseCompression();
 
 app.UseAuthorization();
 
