@@ -88,14 +88,14 @@ namespace ApartmentRank.Domain.Services
         {
             var priceRank = (maxPrice - minPrice) / priceWeighing;
             var score = (int)((maxPrice - price) / priceRank);
-            return score - 1;
+            return score;
         }
 
         public static int SizeScore(double size)
         {
             var sizeRank = (maxSize - minSize) / sizeWeighing;
             var score = (int)((size - minSize) / sizeRank);
-            return score - 1;
+            return score;
         }
 
         public static int LocationScore(PreferenceArea[] preferenceAreas, double lat, double lon)
