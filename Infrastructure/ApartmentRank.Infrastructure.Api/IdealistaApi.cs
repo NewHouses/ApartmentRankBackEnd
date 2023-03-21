@@ -2,7 +2,6 @@
 using ApartmentRank.Infrastructure.EnvironmentAccess;
 using Newtonsoft.Json.Linq;
 using RestSharp;
-using System.Runtime.CompilerServices;
 
 namespace ApartmentRank.Infrastructure.Api
 {
@@ -11,8 +10,9 @@ namespace ApartmentRank.Infrastructure.Api
         public IEnumerable<string> GetApartmentsJson(string request)
         {
             var idealistaRequest = JObject.Parse(request);
+            var oauthToken = GetOauthToken();
             var response = PostApiRequest("https://api.idealista.com/3.5/es/search",
-                                           GetOauthToken(),
+                                           oauthToken,
                                            Array.Empty<(string, string)>(),
                                            new[] {
                                                 ("operation", idealistaRequest.GetValue("operation").ToString()),
@@ -32,7 +32,7 @@ namespace ApartmentRank.Infrastructure.Api
                 for(int numPage = 2; numPage <= totalPages; numPage++)
                 {
                     yield return PostApiRequest("https://api.idealista.com/3.5/es/search",
-                                           GetOauthToken(),
+                                           oauthToken,
                                            Array.Empty<(string, string)>(),
                                            new[] {
                                                 ("operation", idealistaRequest.GetValue("operation").ToString()),

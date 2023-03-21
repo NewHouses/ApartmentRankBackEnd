@@ -19,6 +19,42 @@
 			{
 				"name": "size",
 				"score": 3
+			},
+			{
+				"name": "washmachine",
+				"score": 2
+			},
+			{
+				"name": "allow_pets",
+				"score": 3
+			},
+			{
+				"name": "dishwasher",
+				"score": 1
+			},
+			{
+				"name": "terrace",
+				"score": 2
+			},
+			{
+				"name": "storage_room",
+				"score": 1
+			},
+			{
+				"name": "community_tax_included",
+				"score": 1
+			},
+			{
+				"name": "electricity_costs_included",
+				"score": 1
+			},
+			{
+				"name": "gas_costs_included",
+				"score": 1
+			},
+			{
+				"name": "water_costs_included",
+				"score": 1
 			}
 		],
 		"preferenceAreas": [

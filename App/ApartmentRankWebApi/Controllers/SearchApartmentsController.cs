@@ -17,9 +17,10 @@ namespace ApartmentRank.App.WebApi.Controllers
         }
 
         [HttpGet(Name = "apartmentRanking")]
-        public string Get([FromQuery] string apartmentRankRequest)
+        public async Task<string> Get([FromQuery] string apartmentRankRequest)
         {
-            return searchApartmentsService.GetScoredApartments(apartmentRankRequest).ToJson();
+            var apartments = await searchApartmentsService.GetScoredApartments(apartmentRankRequest);
+            return apartments.ToJson();
         }
     }
 }

@@ -21,6 +21,7 @@ builder.Services.AddTransient<ISearchApartmentsService, SearchApartmentsService>
 builder.Services.AddTransient<IAdapterFactory, IdealistaAdapterFactory>();
 builder.Services.AddTransient<IConnector, Connector>();
 builder.Services.AddScoped<IIdealistaApi, IdealistaApi>();
+builder.Services.AddScoped<IOpenAIApi, OpenAIApi>();
 
 builder.Services.AddCors(options =>
 {
