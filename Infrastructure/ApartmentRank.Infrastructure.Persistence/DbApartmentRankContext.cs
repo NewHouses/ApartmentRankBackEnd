@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using ApartmentRank.Infrastructure.EnvironmentAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApartmentRank.Infrastructure.Persistence
 {
@@ -7,19 +7,20 @@ namespace ApartmentRank.Infrastructure.Persistence
     {
         public DbSet<User> Users { get; set; }
 
-        public string DbPath { get; }
-
-        public DbApartmentRankContext()
-        {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "apartmentRank.db");
-        }
-
-        // The following configures EF to create a Sqlite database file in the
-        // special "local" folder for your platform.
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"Data Source={DbPath}");
+            => options.UseMySql(EnvironmentVariables.ConnectionString, ServerVersion.AutoDetect(EnvironmentVariables.ConnectionString));
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.UserId);
+                entity.Property(e => e.Username).IsRequired();
+                entity.Property(e => e.Password).IsRequired();
+            });
+        }
     }
 
     public class User
