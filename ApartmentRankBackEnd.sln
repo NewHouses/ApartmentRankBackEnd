@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApartmentRank.App.Interface
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApartmentRank.Infrastructure.EnvironmentAccess", "Infrastructure\ApartmentRank.Infrastructure.Environment\ApartmentRank.Infrastructure.EnvironmentAccess.csproj", "{F9F88063-4583-4D2F-B283-0DECF2616AD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmentRank.App.Services.UnitTests", "Tests\ApartmentRank.App.Services.UnitTests\ApartmentRank.App.Services.UnitTests.csproj", "{797E9856-BD75-45E6-93D9-1D433FB78913}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApartmentRank.App.Services.UnitTests", "Tests\ApartmentRank.App.Services.UnitTests\ApartmentRank.App.Services.UnitTests.csproj", "{797E9856-BD75-45E6-93D9-1D433FB78913}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmentRank.Infrastructure.Persistence", "Infrastructure\ApartmentRank.Infrastructure.Persistence\ApartmentRank.Infrastructure.Persistence.csproj", "{C386D5DE-556C-44A6-A77E-0D06A0197A61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{797E9856-BD75-45E6-93D9-1D433FB78913}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{797E9856-BD75-45E6-93D9-1D433FB78913}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{797E9856-BD75-45E6-93D9-1D433FB78913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C386D5DE-556C-44A6-A77E-0D06A0197A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C386D5DE-556C-44A6-A77E-0D06A0197A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C386D5DE-556C-44A6-A77E-0D06A0197A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C386D5DE-556C-44A6-A77E-0D06A0197A61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{390D269D-E618-4728-AA91-CC5F00F715E0} = {295D61B1-A2FB-49A4-93F6-604A1F9512D0}
 		{F9F88063-4583-4D2F-B283-0DECF2616AD6} = {3A21AE15-185B-4543-8E5E-F492FBF8D2EB}
 		{797E9856-BD75-45E6-93D9-1D433FB78913} = {30EDD8F6-4A4C-4A77-AC0D-5FD9A8B303D3}
+		{C386D5DE-556C-44A6-A77E-0D06A0197A61} = {3A21AE15-185B-4543-8E5E-F492FBF8D2EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA77B1D0-B51A-4BE6-91CA-F4EBBD2CE950}
