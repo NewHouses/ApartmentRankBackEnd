@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\App\ApartmentRank.App.Interfaces\ApartmentRank.App.Interfaces.csproj" />
     <ProjectReference Include="..\ApartmentRank.Infrastructure.Environment\ApartmentRank.Infrastructure.EnvironmentAccess.csproj" />
   </ItemGroup>
 
