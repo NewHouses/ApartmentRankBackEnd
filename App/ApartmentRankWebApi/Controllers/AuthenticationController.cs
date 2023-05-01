@@ -17,7 +17,7 @@ namespace ApartmentRank.App.WebApi.Controllers
             this.repository = repository;
         }
 
-        [HttpPost(Name = "signUp")]
+        [HttpPost("signUp")]
         public async Task<IActionResult> PostUser(UserDto newUser)
         {
             try

@@ -35,7 +35,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "ApartmentRankFrontendPolicy",
         policy =>
         {
-            policy.WithOrigins("http://localhost:4200");
+            policy.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
         });
 });
 builder.Services.AddResponseCompression(options =>
