@@ -11,28 +11,30 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApartmentRank.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(DbApartmentRankContext))]
-    [Migration("20230430125608_InitialMigration")]
+    [Migration("20230501120728_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("ApartmentRank.Infrastructure.Persistence.User", b =>
+            modelBuilder.Entity("ApartmentRank.Infrastructure.Persistence.Model.UserEntity", b =>
                 {
                     b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("longtext");
 
                     b.HasKey("UserId");
 
