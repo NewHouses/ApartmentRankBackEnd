@@ -10,7 +10,7 @@ namespace ApartmentRank.App.WebApi.Controllers
     [EnableCors("ApartmentRankFrontendPolicy")]
     public class AuthenticationController : ControllerBase
     {
-        private IUserRepository repository;
+        private readonly IUserRepository repository;
 
         public AuthenticationController(IUserRepository repository)
         {
@@ -25,12 +25,17 @@ namespace ApartmentRank.App.WebApi.Controllers
                 await repository.Add(newUser);
                 repository.Save();
             }
-            catch
+            catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(new AuthResponseData() { message = e.Message });
             }
 
-            return Ok();
+            return Ok(new AuthResponseData() { message = "User registered successfully" });
+        }
+
+        public struct AuthResponseData
+        {
+            public string message { get; set; }
         }
     }
 }
