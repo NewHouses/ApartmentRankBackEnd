@@ -49,7 +49,6 @@ namespace ApartmentRank.Infrastructure.Persistence.DataAccess.Repositories
         {
             return new UserEntity()
             {
-                UserId = userDto.UserId,
                 Username = userDto.Username,
                 Password = userDto.Password
             };
