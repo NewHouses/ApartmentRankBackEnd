@@ -27,15 +27,19 @@ namespace ApartmentRank.App.WebApi.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(new AuthResponseData() { message = e.Message });
+                return BadRequest(new AuthResponseData() { Message = e.Message });
             }
 
-            return Ok(new AuthResponseData() { message = "User registered successfully" });
+            return Ok(new AuthResponseData() { Message = "User registered successfully", username = newUser.Username, token = Guid.NewGuid().ToString() });
         }
 
         public struct AuthResponseData
         {
-            public string message { get; set; }
+            public string Message { get; set; }
+
+            public string username { get; set; }
+
+            public string? token { get; set; }
         }
     }
 }
